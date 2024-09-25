@@ -1,46 +1,42 @@
-"use client"; // Ensures the component runs on the client-side
-import { useState } from 'react'; // Importing useState hook
+"use client"; 
+import { useState } from 'react'; 
 
 export default function NewItem() {
-  // Step 1: Declare the state variable `quantity` and initialize it to 1
   const [quantity, setQuantity] = useState(1);
 
-  // Step 2: Create increment and decrement functions
   const increment = () => {
     if (quantity < 20) {
-      setQuantity(quantity + 1); // Use the setter function to increment quantity
+      setQuantity(quantity + 1);
     }
   };
 
   const decrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1); // Use the setter function to decrement quantity
+      setQuantity(quantity - 1);
     }
   };
 
-  // Step 3: Render the component
   return (
-    <div className="flex items-center space-x-4 p-4">
-      {/* Decrement button */}
-      <button 
-        onClick={decrement} 
-        disabled={quantity === 1} // Disable when quantity is 1
-        className="bg-gray-300 px-4 py-2 rounded-lg disabled:bg-gray-100"
-      >
-        -
-      </button>
+    <div className="h-screen flex justify-center items-start pt-10 bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300">
+      <div className="flex items-center space-x-3 bg-white p-4 rounded-full shadow-lg">
+        <span className="text-lg font-semibold text-gray-700">{quantity}</span>
 
-      {/* Display current quantity */}
-      <span className="text-lg">{quantity}</span>
+        <button 
+          onClick={decrement} 
+          disabled={quantity === 1}
+          className="w-8 h-8 bg-red-400 text-white rounded-full hover:bg-red-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+        >
+          –
+        </button>
 
-      {/* Increment button */}
-      <button 
-        onClick={increment} 
-        disabled={quantity === 20} // Disable when quantity is 20
-        className="bg-gray-300 px-4 py-2 rounded-lg disabled:bg-gray-100"
-      >
-        +
-      </button>
+        <button 
+          onClick={increment} 
+          disabled={quantity === 20}
+          className="w-8 h-8 bg-green-400 text-white rounded-full hover:bg-green-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }
