@@ -1,42 +1,44 @@
 // /app/week-5/new-item.js
 
+"use client"; 
+
 import { useState } from 'react';
 
 export default function NewItem() {
-  // Step 1: Initialize State Variables
-  const [name, setName] = useState(''); // Name field state
-  const [quantity, setQuantity] = useState(1); // Quantity field state (already completed in Week 4)
-  const [category, setCategory] = useState('produce'); // Category field state
+  
+  const [name, setName] = useState(''); 
+  const [quantity, setQuantity] = useState(1); 
+  const [category, setCategory] = useState('produce'); 
 
-  // Step 2: Form Submission Handler
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Create the item object
+   
     const item = {
       name: name,
       quantity: quantity,
       category: category,
     };
 
-    // Log item object to the console
+    
     console.log(item);
 
-    // Display an alert with the current state
+    
     alert(`Item added:\nName: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
 
-    // Reset the state variables to their initial values
+  
     setName('');
     setQuantity(1);
     setCategory('produce');
   };
 
-  // Step 3: Render the Component
+  
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded shadow-md">
       <h2 className="text-xl font-bold mb-4">Add a New Item</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Name Field */}
+       
         <div>
           <label className="block mb-1 text-gray-600">Name</label>
           <input
@@ -49,7 +51,7 @@ export default function NewItem() {
           />
         </div>
 
-        {/* Quantity Field - Completed in Week 4 */}
+        
         <div>
           <label className="block mb-1 text-gray-600">Quantity</label>
           <input
@@ -62,7 +64,7 @@ export default function NewItem() {
           />
         </div>
 
-        {/* Category Field */}
+       
         <div>
           <label className="block mb-1 text-gray-600">Category</label>
           <select
@@ -85,7 +87,7 @@ export default function NewItem() {
           </select>
         </div>
 
-        {/* Submit Button */}
+        
         <button
           type="submit"
           className="w-full py-2 bg-blue-500 text-white font-semibold rounded"
@@ -96,3 +98,4 @@ export default function NewItem() {
     </div>
   );
 }
+``
