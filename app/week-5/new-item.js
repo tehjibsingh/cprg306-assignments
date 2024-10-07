@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function NewItem() {
   // Step 1: Initialize State Variables
   const [name, setName] = useState(''); // Name field state
-  const [quantity, setQuantity] = useState(1); // Already completed in Week 4
+  const [quantity, setQuantity] = useState(1); // Quantity field state (already completed in Week 4)
   const [category, setCategory] = useState('produce'); // Category field state
 
   // Step 2: Form Submission Handler
@@ -25,7 +25,7 @@ export default function NewItem() {
     // Display an alert with the current state
     alert(`Item added:\nName: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
 
-    // Reset the state variables
+    // Reset the state variables to their initial values
     setName('');
     setQuantity(1);
     setCategory('produce');

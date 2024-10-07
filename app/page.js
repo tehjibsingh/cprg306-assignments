@@ -1,3 +1,5 @@
+// /app/page.js
+
 import Link from "next/link";
 
 export default function HomePage() {
@@ -15,7 +17,7 @@ export default function HomePage() {
           <Link href="/week-4">Week 4</Link>
         </li>
         <li>
-          <Link href="/week-5">Week 5</Link>
+          <Link href="/week-5">Week 5</Link> {/* This should navigate to /week-5 */}
         </li>
       </ul>
     </div>
