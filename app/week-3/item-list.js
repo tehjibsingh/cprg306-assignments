@@ -1,3 +1,5 @@
+// /app/week-3/item-list.js
+
 import Item from './item';
 
 export default function ItemList() {
@@ -17,7 +19,7 @@ export default function ItemList() {
   ];
 
   return (
-    <ul className="space-y-4">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {items.map((item, index) => (
         <Item
           key={index}
