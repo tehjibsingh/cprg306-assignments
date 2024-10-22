@@ -1,5 +1,5 @@
 // /app/week-6/item-list.js
-"use client"; // For client-side rendering
+"use client";
 
 import { useState } from 'react';
 import Item from './item';
@@ -46,10 +46,10 @@ export default function ItemList() {
     : { All: sortedItems };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="flex justify-center gap-4 mb-4">
+    <div className="max-w-5xl mx-auto">
+      <div className="flex justify-center gap-4 mb-6">
         <button
-          className={`px-4 py-2 rounded ${sortBy === 'name' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          className={`px-4 py-2 rounded ${sortBy === 'name' && !groupByCategory ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
           onClick={() => {
             setSortBy('name');
             setGroupByCategory(false);
@@ -58,7 +58,7 @@ export default function ItemList() {
           Sort by Name
         </button>
         <button
-          className={`px-4 py-2 rounded ${sortBy === 'category' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          className={`px-4 py-2 rounded ${sortBy === 'category' && !groupByCategory ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
           onClick={() => {
             setSortBy('category');
             setGroupByCategory(false);
@@ -68,7 +68,10 @@ export default function ItemList() {
         </button>
         <button
           className={`px-4 py-2 rounded ${groupByCategory ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-          onClick={() => setGroupByCategory(!groupByCategory)}
+          onClick={() => {
+            setGroupByCategory(!groupByCategory);
+            setSortBy(''); // Reset sortBy when grouping by category
+          }}
         >
           Group by Category
         </button>
@@ -77,8 +80,8 @@ export default function ItemList() {
       {/* Render items */}
       {Object.entries(groupedItems).map(([category, items]) => (
         <div key={category}>
-          {groupByCategory && <h2 className="text-lg font-semibold mt-4 capitalize">{category}</h2>}
-          <ul className="list-none p-0">
+          {groupByCategory && <h2 className="text-lg font-semibold mt-4 capitalize mb-3">{category}</h2>}
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map(item => (
               <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
             ))}
