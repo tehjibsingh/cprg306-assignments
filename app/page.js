@@ -50,6 +50,46 @@ export default function HomePage() {
               <p className="text-gray-100">Advanced React concepts and project completion</p>
             </div>
           </Link>
+
+          {/* Week 6 Card */}
+          <Link href="/week-6">
+            <div className="bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500 text-white shadow-lg rounded-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+              <h2 className="text-2xl font-semibold mb-2">Week 6</h2>
+              <p className="text-gray-100">Exploring Next.js basics</p>
+            </div>
+          </Link>
+
+          {/* Week 7 Card */}
+          <Link href="/week-7">
+            <div className="bg-gradient-to-r from-green-500 via-yellow-500 to-orange-500 text-white shadow-lg rounded-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+              <h2 className="text-2xl font-semibold mb-2">Week 7</h2>
+              <p className="text-gray-100">Server-side rendering and static site generation</p>
+            </div>
+          </Link>
+
+          {/* Week 8 Card */}
+          <Link href="/week-8">
+            <div className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 text-white shadow-lg rounded-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+              <h2 className="text-2xl font-semibold mb-2">Week 8</h2>
+              <p className="text-gray-100">API integration and data fetching</p>
+            </div>
+          </Link>
+
+          {/* Week 9 Card */}
+          <Link href="/week-9">
+            <div className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white shadow-lg rounded-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+              <h2 className="text-2xl font-semibold mb-2">Week 9</h2>
+              <p className="text-gray-100">Authentication and user management</p>
+            </div>
+          </Link>
+
+          {/* Week 10 Card */}
+          <Link href="/week-10">
+            <div className="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 text-white shadow-lg rounded-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out">
+              <h2 className="text-2xl font-semibold mb-2">Week 10</h2>
+              <p className="text-gray-100">Final project and deployment</p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
