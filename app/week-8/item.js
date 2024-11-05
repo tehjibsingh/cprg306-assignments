@@ -1,24 +1,22 @@
-// Updated item.js
 export default function Item({ name, quantity, category, onSelect }) {
     const categoryColors = {
-      // existing category colors
+        dairy: 'bg-blue-100 text-blue-800',
+        bakery: 'bg-yellow-100 text-yellow-800',
+        produce: 'bg-green-100 text-green-800',
+        meat: 'bg-red-100 text-red-800',
+        other: 'bg-gray-100 text-gray-800',
     };
-  
-    const categoryStyle = categoryColors[category] || 'bg-gray-200 text-gray-900';
-  
+
+    const categoryStyle = categoryColors[category] || 'bg-gray-100 text-gray-800';
+
     return (
-      <li 
-        className={`relative p-6 rounded-xl shadow-xl overflow-hidden transition-all transform hover:-translate-y-1 hover:shadow-2xl ${categoryStyle}`}
-        onClick={() => onSelect(name)}  // Pass name to the onSelect function
-      >
-        <div className="absolute inset-0 bg-white/20 rounded-xl opacity-75 backdrop-blur-md -z-10" />
-        <div className="relative z-10">
-          <h3 className="text-2xl font-extrabold mb-2">{name}</h3>
-          <p className="text-md mb-1">Quantity: {quantity}</p>
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/50 text-black">
-            {category}
-          </span>
-        </div>
-      </li>
+        <li 
+            onClick={() => onSelect(name)} 
+            className={`p-4 rounded-lg shadow-md transition-transform transform hover:scale-105 cursor-pointer ${categoryStyle}`}
+        >
+            <h3 className="text-lg font-bold">{name}</h3>
+            <p>Quantity: {quantity}</p>
+            <p>Category: {category}</p>
+        </li>
     );
 }
