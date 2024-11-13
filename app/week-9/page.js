@@ -1,16 +1,41 @@
-// Import the useUserAuth hook
+// page.js
+"use client";
+
 import { useUserAuth } from "./_utils/auth-context";
- 
-// Use the useUserAuth hook to get the user object and the login and logout functions
-const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
- 
-// Sign in to Firebase with GitHub authentication
-await gitHubSignIn();
- 
-// Sign out of Firebase
-await firebaseSignOut();
- 
-// Display some of the user's information
-<p>
-  Welcome, {user.displayName} ({user.email})
-</p>;
+
+export default function HomePage() {
+  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+
+  const handleSignIn = async () => {
+    try {
+      await gitHubSignIn();
+    } catch (error) {
+      console.error("GitHub Sign-In Error:", error.message);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await firebaseSignOut();
+    } catch (error) {
+      console.error("Sign-Out Error:", error.message);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center p-8">
+      {!user ? (
+        <button onClick={handleSignIn} className="bg-blue-500 text-white py-2 px-4 rounded">
+          Login with GitHub
+        </button>
+      ) : (
+        <>
+          <p>Welcome, {user.displayName} ({user.email})</p>
+          <button onClick={handleSignOut} className="bg-red-500 text-white py-2 px-4 rounded">
+            Logout
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
