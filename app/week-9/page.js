@@ -1,41 +1,36 @@
-// page.js
 "use client";
 
 import { useUserAuth } from "./_utils/auth-context";
+import SecurePage from "./shopping-list/page";
 
-export default function HomePage() {
-  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+export default function Page() {
+    const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
-  const handleSignIn = async () => {
-    try {
-      await gitHubSignIn();
-    } catch (error) {
-      console.error("GitHub Sign-In Error:", error.message);
-    }
-  };
+    const login = async () => {
+        await gitHubSignIn();
+    };
 
-  const handleSignOut = async () => {
-    try {
-      await firebaseSignOut();
-    } catch (error) {
-      console.error("Sign-Out Error:", error.message);
-    }
-  };
+    const logout = async () => {
+        await firebaseSignOut();
+    };
 
-  return (
-    <div className="flex flex-col items-center p-8">
-      {!user ? (
-        <button onClick={handleSignIn} className="bg-blue-500 text-white py-2 px-4 rounded">
-          Login with GitHub
-        </button>
-      ) : (
-        <>
-          <p>Welcome, {user.displayName} ({user.email})</p>
-          <button onClick={handleSignOut} className="bg-red-500 text-white py-2 px-4 rounded">
-            Logout
-          </button>
-        </>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            <header>
+                <nav>
+                    {user ? (
+                        <div className="p-2 bg-neutral-900 ">
+                            <div className="flex place-items-center justify-between ">
+                                <span className="text-neutral-100 text-5xl" >You are logged in as, {user.displayName}</span>
+                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded " onClick={firebaseSignOut} >Sign Out</button>
+                            </div>
+                            <SecurePage />
+                        </div>
+                    ) : (
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={gitHubSignIn}>Sign In</button>
+                    )}
+                </nav>
+            </header>
+        </div>
+    );
 }
